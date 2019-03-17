@@ -1,17 +1,18 @@
 footer {
     position: absolute;
     bottom: 0;
-	height: auto;
+	height: 40px;
     width: 100%;
-    background-color: gray;
-    margin-top: auto;
+    background-color: gray;    
+    margin-bottom: 0%;
+    
 }
 
 p{
     position: relative;
 	width: 100%;
     color: #fff;
-    line-height: 5px;
+    line-height: 10px;
     font-size: 0.7em;
 	text-align: center;
     bottom:0;
