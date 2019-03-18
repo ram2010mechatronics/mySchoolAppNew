@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const loginPayload = {
+      grant_type : 'password',
       username: this.loginForm.controls.username.value,
       password: this.loginForm.controls.password.value
     };
@@ -26,8 +27,9 @@ export class LoginComponent implements OnInit {
       // tslint:disable-next-line:no-debugger
       debugger;
       if (data.status === 200) {
-        window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['list-user']);
+        window.localStorage.setItem('token', data.result.access_token);
+        window.localStorage.setItem('refreshtoken', data.result.refresh_token);
+        this.router.navigate(['home']);
       } else {
         this.invalidLogin = true;
         alert(data.message);

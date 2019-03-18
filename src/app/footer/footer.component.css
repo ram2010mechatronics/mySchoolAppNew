@@ -1,11 +1,13 @@
 footer {
-    position: absolute;
+    position: relative;
+    line-height: 1px;
     bottom: 0;
-	height: 40px;
-    width: 100%;
-    background-color: gray;    
-    margin-bottom: 0%;
-    
+    flex: 1;
+    padding: 2px;
+    z-index: 0;
+    background-color: gray;
+    color: #fafafa;
+    font-weight: 10;
 }
 
 p{
