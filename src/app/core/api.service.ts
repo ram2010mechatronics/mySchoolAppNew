@@ -7,7 +7,8 @@ import { HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/x-www-form-urlencoded',
-    'Authorization': 'Basic my-auth-token'
+    Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
+    'Access-Control-Allow-Headers': '*'
   })
 };
 
