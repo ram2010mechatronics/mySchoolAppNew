@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       if (data.status === 200) {
         window.localStorage.setItem('token', data.result.access_token);
         window.localStorage.setItem('refreshtoken', data.result.refresh_token);
-        this.router.navigate(['home']);
+        this.router.navigate(['/home']);
       } else {
         this.invalidLogin = true;
         alert(data.message);
@@ -54,6 +54,4 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
-
 }
