@@ -1,7 +1,9 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ApiService} from '../core/api.service';
+
 
 @Component({
   selector: 'app-login',
@@ -18,12 +20,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const loginPayload = {
-      grant_type : 'password',
-      username: this.loginForm.controls.username.value,
-      password: this.loginForm.controls.password.value
-    };
-    this.apiService.login(loginPayload).subscribe(data => {
+
+    let body = new HttpParams();
+    body = body.set('grant_type' , 'password');
+    body = body.set('username', this.loginForm.controls.username.value);
+    body = body.set('password', this.loginForm.controls.password.value);
+
+
+    // const loginPayload = {
+    //   grant_type : 'password',
+    //   username: this.loginForm.controls.username.value,
+    //   password: this.loginForm.controls.password.value
+    // };
+
+    this.apiService.login(body).subscribe(data => {
       // tslint:disable-next-line:no-debugger
       debugger;
       if (data.status === 200) {
