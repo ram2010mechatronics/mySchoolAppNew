@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpEvent, HttpHeaders, HttpHeaderResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginRes } from '../login/loginres';
 import { HttpHeaders } from '@angular/common/http';
@@ -25,9 +25,12 @@ export class ApiService {
 
   login(body): Observable<LoginRes> {
     return this.http.post<LoginRes>(this.tokenUrl, body, httpOptions);
-
     // login(body): Observable<LoginRes> {
     //   return this.http.post<LoginRes>(this.tokenUrl, body, httpOptions);
+  }
+
+  loginRequest(body): Observable<HttpResponse<Response>> {
+    return this.http.post<HttpResponse<Response>>(this.tokenUrl, body, httpOptions);
   }
 
 }
