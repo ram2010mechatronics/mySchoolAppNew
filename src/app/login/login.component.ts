@@ -33,16 +33,14 @@ export class LoginComponent implements OnInit {
     //   password: this.loginForm.controls.password.value
     // };
 
-    this.apiService.login(body).subscribe(data => {
+    this.apiService.loginRequest(body).subscribe(data => {
       // tslint:disable-next-line:no-debugger
       debugger;
       if (data.status === 200) {
-        window.localStorage.setItem('token', data.result.access_token);
-        window.localStorage.setItem('refreshtoken', data.result.refresh_token);
-        this.router.navigate(['/home']);
+        console.log(data.body);
       } else {
         this.invalidLogin = true;
-        alert(data.message);
+        alert(data.statusText);
       }
     });
 
