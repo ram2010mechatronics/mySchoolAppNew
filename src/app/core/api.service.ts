@@ -6,10 +6,10 @@ import { LoginRes } from '../login/loginres';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    // 'Content-Type':  'application/x-www-form-urlencoded',
-    'Content-Type':  'application/json'
-    // Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
-    // 'Access-Control-Allow-Headers': '*'
+    'Content-Type':  'application/x-www-form-urlencoded',
+    // 'Content-Type':  'application/json'
+    Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
+    'Access-Control-Allow-Headers': '*'
   })
 };
 
@@ -31,11 +31,10 @@ export class ApiService {
   }
 
   loginRequest(body): Observable<HttpResponse<Response>> {
-    return this.http.post<HttpResponse<Response>>(this.tokenUrl, null, {
+    return this.http.post<HttpResponse<Response>>(this.tokenUrl, body, {
       headers: new HttpHeaders({
-        // 'Content-Type':  'application/x-www-form-urlencoded',
-        'Content-Type':  'application/json',
-        // Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
+        'Content-Type':  'application/x-www-form-urlencoded',
+         Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
         'Access-Control-Allow-Headers': '*',
         'Access-Control-Allow-Origin': '*'
       })
