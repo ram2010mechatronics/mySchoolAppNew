@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     //   password: this.loginForm.controls.password.value
     // };
 
-    this.apiService.loginRequest(body).subscribe(data => {
+    this.apiService.loginRequestNew(body).subscribe(data => {
       // tslint:disable-next-line:no-debugger
       debugger;
       if (data.status === 200) {

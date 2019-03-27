@@ -15,12 +15,10 @@ const httpOptions = {
 
 
 
-
-
 @Injectable()
 export class ApiService {
 
-    tokenUrl = 'http://localhost:8089/oauth2/token';
+    tokenUrl = 'http://localhost:8083/oauth2/token';
 
     constructor(private http: HttpClient) { }
 
@@ -41,4 +39,13 @@ export class ApiService {
     });
   }
 
+  loginRequestNew(body): Observable<HttpResponse<Object>> {
+     return this.http.post(this.tokenUrl, body , {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+         Authorization: 'Basic aUt6cUFJQW5uVjR1eGNSQ1RJNTdVWkpYYURNYTpZZmJrQ0F4OGJtN3dHSmxHZ1lxamtmR3RJRVlh',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Origin': '*'
+      }),
+      observe: 'response'}); }
 }

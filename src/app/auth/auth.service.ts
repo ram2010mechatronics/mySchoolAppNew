@@ -20,7 +20,7 @@ export class AuthService {
     if (user  !==  null) {
     return true;
     }
-    return true;
+    return false;
  }
 
 }
