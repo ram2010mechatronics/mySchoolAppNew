@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       debugger;
       if (data.body.access_token) {
         localStorage.setItem('token', data.body.access_token);
-        this.router.navigate(['Home']);
+        this.router.navigate(['home']);
       } else {
         this.invalidLogin = true;
         alert(data.statusText);

@@ -52,7 +52,7 @@ export class AuthService {
       observe: 'response'}); }
 
   get isLoggedIn(): boolean {
-        const  user  =  JSON.parse(localStorage.getItem('token'));
+        const  user  =  localStorage.getItem('token');
         if (user  !==  null) {
         return true;
         }
