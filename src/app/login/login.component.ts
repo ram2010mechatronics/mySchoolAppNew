@@ -14,7 +14,10 @@ export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
   invalidLogin = false;
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private authService: AuthService) { }
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -36,8 +39,9 @@ export class LoginComponent implements OnInit {
     this.authService.loginRequestNew(body).subscribe(data => {
       // tslint:disable-next-line:no-debugger
       debugger;
-      if (data.status === 200) {
-        console.log(data.body);
+      if (data.body.access_token) {
+        localStorage.setItem('token', data.body.access_token);
+        this.router.navigate(['Home']);
       } else {
         this.invalidLogin = true;
         alert(data.statusText);

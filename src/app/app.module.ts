@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,13 +7,13 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './core/api.service';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { PrinicpalComponent } from './prinicpal/prinicpal.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { StudentComponent } from './student/student.component';
 import { ParentComponent } from './parent/parent.component';
 import { LogoutComponent } from './logout/logout.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,8 @@ import { LogoutComponent } from './logout/logout.component';
     TeacherComponent,
     StudentComponent,
     ParentComponent,
-    LogoutComponent
+    LogoutComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import { LogoutComponent } from './logout/logout.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ApiService, AuthService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,8 @@ const httpOptions = {
 @Injectable()
 export class AuthService {
 
-    tokenUrl = 'http://localhost:8083/oauth2/token';
+  tokenUrl = 'http://localhost:8083/oauth2/token';
+  router: any;
 
     constructor(private http: HttpClient) { }
 
@@ -39,8 +40,8 @@ export class AuthService {
     });
   }
 
-  // tslint:disable-next-line:ban-types
-  loginRequestNew(body): Observable<HttpResponse<Object>> {
+
+  loginRequestNew(body): Observable<any> {
      return this.http.post(this.tokenUrl, body , {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded',
@@ -49,4 +50,18 @@ export class AuthService {
         'Access-Control-Allow-Origin': '*'
       }),
       observe: 'response'}); }
+
+  get isLoggedIn(): boolean {
+        const  user  =  JSON.parse(localStorage.getItem('token'));
+        if (user  !==  null) {
+        return true;
+        }
+        return false;
+     }
+
+  async logout() {
+      // await this.afAuth.auth.signOut();
+      localStorage.removeItem('token');
+      this.router.navigate(['login']);
+  }
 }
