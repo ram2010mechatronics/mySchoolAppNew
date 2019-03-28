@@ -16,7 +16,7 @@ const httpOptions = {
 
 
 @Injectable()
-export class ApiService {
+export class AuthService {
 
     tokenUrl = 'http://localhost:8083/oauth2/token';
 
@@ -39,6 +39,7 @@ export class ApiService {
     });
   }
 
+  // tslint:disable-next-line:ban-types
   loginRequestNew(body): Observable<HttpResponse<Object>> {
      return this.http.post(this.tokenUrl, body , {
       headers: new HttpHeaders({

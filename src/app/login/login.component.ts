@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {ApiService} from '../core/api.service';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     loginForm: FormGroup;
   invalidLogin = false;
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: ApiService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     //   password: this.loginForm.controls.password.value
     // };
 
-    this.apiService.loginRequestNew(body).subscribe(data => {
+    this.authService.loginRequestNew(body).subscribe(data => {
       // tslint:disable-next-line:no-debugger
       debugger;
       if (data.status === 200) {
