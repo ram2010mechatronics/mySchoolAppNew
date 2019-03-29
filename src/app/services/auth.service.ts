@@ -60,7 +60,7 @@ export class AuthService {
         return false;
      }
 
-  async logout() {
+  public logout() {
       // await this.afAuth.auth.signOut();
       localStorage.removeItem('token');
       this.router.navigate(['loginpage']);
