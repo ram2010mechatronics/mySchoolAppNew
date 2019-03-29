@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginRes } from '../login/loginres';
+import {Router} from '@angular/router';
 
 
 const httpOptions = {
@@ -19,9 +20,9 @@ const httpOptions = {
 export class AuthService {
 
   tokenUrl = 'http://localhost:8083/oauth2/token';
-  router: any;
 
-    constructor(private http: HttpClient) { }
+
+    constructor(private http: HttpClient, private router: Router) { }
 
   login(body): Observable<LoginRes> {
     return this.http.post<LoginRes>(this.tokenUrl, body, httpOptions);
@@ -62,6 +63,15 @@ export class AuthService {
   async logout() {
       // await this.afAuth.auth.signOut();
       localStorage.removeItem('token');
-      this.router.navigate(['login']);
+      this.router.navigate(['loginpage']);
   }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if (token  !==  null) {
+      return true;
+      }
+    return false;
+  }
+
 }

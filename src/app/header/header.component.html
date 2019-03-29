@@ -11,8 +11,9 @@
                 <a class="nav-link register-custom" routerLink="/loginpage">Login</a>
             </li>   
             <li  *ngIf="authService.isLoggedIn" class="nav-item">
-                <a class="nav-link"  (click)="authService.logout()">Logout</a>
-            </li>             
+                <!-- <a class="button"  (click)="authService.logout()">Logout</a> -->
+                <button (click)="authService.logout()">Logout</button>
+            </li>                
         </ul>
     </div>
 </nav>
